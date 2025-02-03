@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}第四步：是否点钻{% endblock %}
+
+{% block content %}
+    <h2>第四步：是否需要点钻？</h2>
+    <form method="POST">
+        <div class="radio-group">
+            <label>
+                <input type="radio" name="need_drill" value="yes" required> 
+                <span>是</span>
+            </label>
+            <label>
+                <input type="radio" name="need_drill" value="no"> 
+                <span>否</span>
+            </label>
+        </div>
+        <button type="submit">下一步</button>
+    </form>
+{% endblock %}

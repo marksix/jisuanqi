@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}第五步：是否点油{% endblock %}
+
+{% block content %}
+    <h2>第五步：是否需要点油？</h2>
+    <form method="POST">
+        <div class="radio-group">
+            <label>
+                <input type="radio" name="need_oil" value="yes" required> 
+                <span>是</span>
+            </label>
+            <label>
+                <input type="radio" name="need_oil" value="no"> 
+                <span>否</span>
+            </label>
+        </div>
+        <button type="submit">计算成本</button>
+    </form>
+{% endblock %}

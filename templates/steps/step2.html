@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}第二步：选择电镀方式{% endblock %}
+
+{% block content %}
+    <h2>第二步：选择电镀方式</h2>
+    <form method="POST">
+        <div class="radio-group">
+            <label>
+                <input type="radio" name="plating_type" value="shake" required> 
+                <span>摇镀</span>
+            </label>
+            <label>
+                <input type="radio" name="plating_type" value="whole"> 
+                <span>整片镀</span>
+            </label>
+            <label>
+                <input type="radio" name="plating_type" value="whole"> 
+                <span>插镀</span>
+            </label>
+        </div>
+        <button type="submit">下一步</button>
+    </form>
+{% endblock %}

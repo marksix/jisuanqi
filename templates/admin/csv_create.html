@@ -1,0 +1,23 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+    <h1>创建新数据</h1>
+    <form method="post">
+        {{ form.hidden_tag() }}
+        {% for field in form if field.widget.input_type != 'hidden' %}
+            <div class="form-group">
+                {{ field.label(class="control-label") }}
+                {{ field(class="form-control") }}
+                {% if field.errors %}
+                    <ul class="errors">
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">创建</button>
+        <a href="{{ url_for('.index_view') }}" class="btn btn-default">取消</a>
+    </form>
+{% endblock %}

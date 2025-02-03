@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}第三步：选择颜色{% endblock %}
+
+{% block content %}
+    <h2>第三步：选择颜色</h2>
+    <form method="POST">
+        <div class="radio-group">
+            {% for color in colors %}
+            <label>
+                <input type="radio" name="color" value="{{ color }}" required> 
+                <span>{{ color }}</span>
+            </label>
+            {% endfor %}
+        </div>
+        <button type="submit">下一步</button>
+    </form>
+{% endblock %}

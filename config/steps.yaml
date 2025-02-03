@@ -1,0 +1,46 @@
+steps:
+  - id: step1
+    name: 产品验证
+    route: /step1
+    template: steps/step1.html
+    validations:
+      - field: product_id
+        type: product_id
+    next: step2
+
+  - id: step2
+    name: 电镀方式
+    route: /step2
+    template: steps/step2.html
+    next_logic: >
+      'step3' if session.get('plating_type', '') == 'shake' else 'step4'
+
+  - id: step3
+    name: 颜色选择
+    route: /step3
+    template: steps/step3.html
+    requires: "session.get('plating_type', '') == 'shake'"
+    next: step4
+
+  - id: step4
+    name: 点钻选择
+    route: /step4
+    template: steps/step4.html
+    next_logic: >
+      'step4a' if session.get('need_drill', False) else 'step5'
+
+  - id: step4a
+    name: 钻石数量
+    route: /step4a
+    template: steps/step4a.html
+    requires: "session.get('need_drill', False)"
+    validations:
+      - field: drill_count
+        type: number
+    next: step5
+
+  - id: step5
+    name: 点油选择
+    route: /step5
+    template: steps/step5.html
+    next: result

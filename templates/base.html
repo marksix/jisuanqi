@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>产品成本计算系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="progress-bar">
+        {% for step in steps %}
+            <div class="step {% if step.id == current_step.id %}active{% endif %}">
+                <i class="fa fa-{{ 'check' if loop.index < current_step_index else 'circle' }}"></i>
+                {{ step.name }} ({{ loop.index }}/{{ total_steps }})
+            </div>
+        {% endfor %}
+    </div>
+    
+    <div class="content">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alert-container">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
