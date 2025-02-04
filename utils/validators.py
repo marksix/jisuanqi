@@ -14,7 +14,7 @@ def validate_field(validation, form_data):
         if value not in session.get('available_colors', []):
             flash('无效的颜色选择', 'error')
             return False
-    elif validation['type'] == 'drill_count':
+    elif validation['type'] == 'diamond_count':
         try:
             count = int(value)
             if count < 0:

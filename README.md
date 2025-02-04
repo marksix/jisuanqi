@@ -1,24 +1,22 @@
-# 介绍
+# Introduction
+This templates demonstrates how to use flask & gunicorn with python runtime.
 
-这是一个基础的 Python HTTP 服务项目的模板。
+# Get started
+* Click the **Run** button to run the project.
+![Run](https://lf-cdn.marscode.com/obj/eden-sg/ljhwz_lkpkbvsj/ljhwZthlaukjlkulzlp/project_template/prod/17230fef56b045aa48b889b2781899227bde119f/images/native_python_flask/run.jpeg)
 
-# 开始
+* Go to **Ports** and preview the page at **port:8080**.
+![CloudPort](https://lf-cdn.marscode.com/obj/eden-sg/ljhwz_lkpkbvsj/ljhwZthlaukjlkulzlp/project_template/prod/17230fef56b045aa48b889b2781899227bde119f/images/native_python_flask/cloud_port.jpeg)
 
-- 单击 **运行** 按钮启动程序。
-  ![图片](https://lf-cdn.marscode.com.cn/obj/eden-cn/ljhwz_lkpkbvsj/ljhwZthlaukjlkulzlp/project_template/prod/17230fef56b045aa48b889b2781899227bde119f/images/native_python/run.png)
+* Go to **Terminal** and Execute the "curl localhost:8080" command.
+![Preview](https://lf-cdn.marscode.com/obj/eden-sg/ljhwz_lkpkbvsj/ljhwZthlaukjlkulzlp/project_template/prod/17230fef56b045aa48b889b2781899227bde119f/images/native_python_flask/preview.jpeg)
 
-- 转到 网络 并预览页面 **端口：8080。**
-  ![图片](https://lf-cdn.marscode.com.cn/obj/eden-cn/ljhwz_lkpkbvsj/ljhwZthlaukjlkulzlp/project_template/prod/17230fef56b045aa48b889b2781899227bde119f/images/native_python/cloud_port.png)
+By default, MarsCode runs the **Flask** By **Gunicorn**, but you can configure it by changing the configuration in the **.vscode/launch.json**. Refer to [Visual Studio Code's doc](https://code.visualstudio.com/docs/editor/debugging) for how to configure launch.json.
 
-- 转到调试控制台面板查看输出。
-  ![图片](https://lf-cdn.marscode.com.cn/obj/eden-cn/ljhwz_lkpkbvsj/ljhwZthlaukjlkulzlp/project_template/prod/17230fef56b045aa48b889b2781899227bde119f/images/native_python/preview.png)
+# Learn more
+- [Python](https://www.python.org/) - tThe official home of the Python programming language.
+- [Flask](https://flask.palletsprojects.com/en/3.0.x/) - learn about Flask features.
+- [Gunicorn](https://gunicorn.org/) - learn about Gunicorn features.
 
-默认情况下，MarsCode 为您提供了一个默认的运行配置：运行 main.py。你可以更改 **. vscode/launch.json** 中的配置。参考 [Visual Studio Code 的文档](https://code.visualstudio.com/docs/editor/debugging) 有关如何配置 launch. json。
-
-# 了解更多
-
-- [Python](https://www.python.org/) - Python 编程语言的官方主页。
-
-# 帮助
-
-如果你需要帮助，你可以查看[文档](https://docs.marscode.cn/)，或向我们提供[反馈](https://juejin.cn/pin/club/7359094304150650889?utm_source=doc&utm_medium=marscode)。
+# Help
+If you need help, you might be able to find an answer in our [docs](https://docs.marscode.com/). Feel free to report bugs and give us feedback [here](https://discord.gg/qtVMXEDbRw).

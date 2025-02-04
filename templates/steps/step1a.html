@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
-{% block title %}选择颜色{% endblock %}
+{% block title %}选择材料{% endblock %}
 
 {% block content %}
-    <h2>选择颜色</h2>
+    <h2>选择材料</h2>
     <form method="POST">
         <div class="radio-group">
-            {% for color in colors %}
+            {% for material in materials %}
             <label>
-                <input type="radio" name="color" value="{{ color }}" required> 
-                <span>{{ color }}</span>
+                <input type="radio" name="material" value="{{ material }}" required> 
+                <span>{{ material }}</span>
             </label>
             {% endfor %}
         </div>

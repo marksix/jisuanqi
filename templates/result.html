@@ -6,12 +6,53 @@
     <div class="result-container">
         <h2>产品 {{ product_id }} 成本明细</h2>
         <ul>
-            <li>原料成本: {{ details.material }}元</li>
+            <li>原料成本: {{ details.material | round(4, 'common') }}元</li>
+            <li>注塑成本: {{ details.process | round(4, 'common') }}元</li>
             <li>电镀费用: {{ details.plating }}元</li>
-            <li>点钻费用: {{ details.drill }}元</li>
+            <li>点钻费用: {{ details.diamond }}元</li>
             <li>点油费用: {{ details.oil }}元</li>
+            <li>手工费用: {{ details.handmade }}元</li>
         </ul>
-        <h3>总成本: {{ total_cost }}元</h3>
+        <h3>建议售价：{{ (total_cost * 10000/0.65) | round(0, 'common') }}元/每万</h3>
+        <h7>成本:{{ (total_cost * 10000) | round(1, 'common') }}元/每万 , {{ total_cost | round(4, 'common') }}元/颗</h7>
+        <p>
+        <small class="custom-text">
+            <p>价格说明:
+            损耗率：{{ describe.plating_return }}%,
+
+            产品重量：{{ describe.products_weigh }}克,
+
+            模具出数：{{ describe.products_molds }}颗/一模,</p>
+
+            <p>原料价格按{{ describe.material_price }}元/每吨,
+
+            注塑加工费按{{ describe.process_price }}一手,</p>
+
+            <p>{% if describe.diamond_number %}
+                钻石数量：{{ describe.diamond_number }}颗,
+            {% else %}
+                不点钻,
+            {% endif %}
+
+            {% if describe.oil_need == 'yes' %}
+                点油,
+            {% elif describe.oil_need == 'no' %}
+                不点油,
+            {% endif %}
+
+            {% if describe.plating_method == 'shake' %}
+                电镀方式：正常贴起来镀,
+            {% elif describe.plating_method == 'insert' %}
+                电镀方式：单颗插起来镀,
+            {% elif describe.plating_method == 'whole' %}
+                电镀方式：整板镀
+            {% endif %}
+
+            {% if describe.plating_color %}
+               ,{{ describe.plating_color }}
+            {% endif %}</p>
+        </small>
+        </p>
         <a href="/" class="btn" style="margin-top: 20px;">重新开始</a>
     </div>
 {% endblock %}

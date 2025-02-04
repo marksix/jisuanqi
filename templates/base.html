@@ -7,11 +7,11 @@
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="progress-bar">
+    <div class="tab-container">
         {% for step in steps %}
-            <div class="step {% if step.id == current_step.id %}active{% endif %}">
+            <div class="tab {% if step.id == current_step.id %}active{% endif %}" onclick="location.href='{{ url_for(step.id) }}'">
                 <i class="fa fa-{{ 'check' if loop.index < current_step_index else 'circle' }}"></i>
-                {{ step.name }} ({{ loop.index }}/{{ total_steps }})
+                {{ step.name }}
             </div>
         {% endfor %}
     </div>

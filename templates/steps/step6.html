@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 
-{% block title %}是否需要点油{% endblock %}
+{% block title %}是否需要手工{% endblock %}
 
 {% block content %}
-    <h2>是否需要点油？</h2>
+    <h2>是否需要手工？</h2>
     <form method="POST">
         <div class="radio-group">
             <label>
-                <input type="radio" name="need_oil" value="yes" required> 
+                <input type="radio" name="need_handmade" value="yes" required> 
                 <span>是</span>
             </label>
             <label>
-                <input type="radio" name="need_oil" value="no"> 
+                <input type="radio" name="need_handmade" value="no"> 
                 <span>否</span>
             </label>
         </div>
-        <button type="submit">下一步</button>
+        <button type="submit">计算结果</button>
     </form>
 {% endblock %}

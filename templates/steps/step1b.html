@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}确认原料价格{% endblock %}
+
+{% block content %}
+    <h2>确认原料价格</h2>
+    <form method="POST">
+
+        <label for="new_material_price">原料价格：</label>
+        <input type="number" id="new_material_price" name="new_material_price" min="1" 
+       value="{{ selected_material }}" required>
+
+        <button type="submit">下一步</button>
+    </form>
+{% endblock %}

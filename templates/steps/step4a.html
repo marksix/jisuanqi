@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}第四步：输入钻石数量{% endblock %}
+{% block title %}输入钻石数量{% endblock %}
 
 {% block content %}
     <h2>请输入钻石数量</h2>
     <form method="POST">
 
-        <label for="drill_count">钻石数量：</label>
-        <input type="number" id="drill_count" name="drill_count" min="0" required>
+        <label for="diamond_count">钻石数量：</label>
+        <input type="number" id="diamond_count" name="diamond_count" min="1" required>
 
         <button type="submit">下一步</button>
     </form>

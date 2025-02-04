@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}电镀返还率{% endblock %}
+
+{% block content %}
+    <h2>电镀返还率</h2>
+    <form method="POST">
+
+        <label for="plating_return">电镀返还率：</label>
+        <input type="number" id="plating_return" name="plating_return" min="50" 
+       value="95" required>
+        <small>特别说明:无损耗填写100,损耗10%就填90.</small>
+        <button type="submit">下一步</button>
+    </form>
+{% endblock %}

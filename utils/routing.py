@@ -55,12 +55,14 @@ def _create_step_handler(app, config):
                 session.modified = True  # 确保会话数据被保存
                 return False
         elif validation['type'] == 'number':
-            if not value.isdigit():
+            try:
+              float(value)
+            except ValueError:
                 flash('❌ 请输入有效的数字', 'error')
                 session.modified = True  # 确保会话数据被保存
                 session[field] = value  # 保留用户输入的值
                 return False
-            session[field] = int(value)
+            session[field] = float(value)
         return True
 
     def _redirect_next(config):
@@ -81,13 +83,23 @@ def _prepare_context(app, config):
         (i for i, step in enumerate(steps) if step['id'] == config['id']),
         0
     ) + 1
-    return {
+    context = {
         'current_step': config,
         'steps': steps,
         'current_step_index': current_step_index,
         'total_steps': len(steps),
-        'colors': app.data['colors'].keys() if config['id'] == 'step3' else None
+        'colors': app.data['colors'].keys() if config['id'] == 'step3' else None,
+        'materials': app.data['materials'].keys() if config['id'] == 'step1a' else None
     }
+
+    # 处理 step1b 步骤，获取所选材料的价格
+    if config['id'] == 'step1b':
+        selected_material_name = session.get('material')
+        if selected_material_name:
+            selected_material = app.data['materials'].get(selected_material_name)
+            context['selected_material'] = selected_material
+    return context
+    
 
 def _get_steps_config():
     with open('config/steps.yaml', encoding='utf-8') as f:

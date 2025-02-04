@@ -1,46 +1,130 @@
+# 定义一系列步骤，用于某个业务流程，每个步骤有特定的标识、名称、路由、模板等信息
 steps:
+  # 第一步：产品验证
   - id: step1
+    # 步骤名称，用于直观展示该步骤的功能
     name: 产品验证
+    # 该步骤对应的路由，客户端可通过此路由访问该步骤的页面
     route: /step1
+    # 该步骤所使用的 HTML 模板文件路径
     template: steps/step1.html
+    # 该步骤需要进行的验证规则列表
     validations:
+      # 对 'product_id' 字段进行验证
       - field: product_id
+        # 验证类型为 'product_id'，具体验证逻辑由业务代码实现
         type: product_id
+    # 该步骤完成后，下一步的步骤标识
+    next: step1a
+
+  # 第二步：材料选择
+  - id: step1a
+    name: 材料选择
+    route: /step1a
+    template: steps/step1a.html
+    # 此步骤完成后，进入 'step2' 步骤
+    next: step1b
+
+  # 第三步：确认原料价格
+  - id: step1b
+    name: 确认原料价格
+    route: /step1b
+    template: steps/step1b.html
+    validations:
+      # 对 'material_price' 字段进行验证
+      - field: new_material_price
+        # 验证类型为 'number'，确保该字段为数字类型
+        type: number
+    # 此步骤完成后，进入 'step1c' 步骤
+    next: step1c
+
+  # 第三步：确认原料价格
+  - id: step1c
+    name: 电镀厂返还率
+    route: /step1c
+    template: steps/step1c.html
+    validations:
+      # 对 'plating_return' 字段进行验证
+      - field: plating_return
+        # 验证类型为 'number'，确保该字段为数字类型
+        type: number
+    # 此步骤完成后，进入 'step2' 步骤
     next: step2
 
+  # 第三步：电镀方式
   - id: step2
     name: 电镀方式
     route: /step2
     template: steps/step2.html
+    # 根据会话中 'plating_type' 的值动态决定下一步骤
+    # 如果 'plating_type' 为 'shake'，则下一步为 'step3'，否则为 'step4'
     next_logic: >
       'step3' if session.get('plating_type', '') == 'shake' else 'step4'
 
+  # 第四步：颜色选择
   - id: step3
     name: 颜色选择
     route: /step3
     template: steps/step3.html
+    # 该步骤执行的前置条件，只有当会话中 'plating_type' 的值为 'shake' 时，此步骤才会执行
     requires: "session.get('plating_type', '') == 'shake'"
+    # 此步骤完成后，进入 'step4' 步骤
     next: step4
 
+  # 第五步：点钻选择
   - id: step4
     name: 点钻选择
     route: /step4
     template: steps/step4.html
+    # 根据会话中 'need_diamond' 的值动态决定下一步骤
+    # 如果 'need_diamond' 为 yes，则下一步为 'step4a'，否则为 'step5'
     next_logic: >
-      'step4a' if session.get('need_drill', False) else 'step5'
+      'step4a' if session.get('need_diamond', '') == 'yes' else 'step5'
 
+  # 第六步：钻石数量
   - id: step4a
     name: 钻石数量
     route: /step4a
     template: steps/step4a.html
-    requires: "session.get('need_drill', False)"
+    # 该步骤执行的前置条件，只有当会话中 'need_diamond' 的值为 yes 时，此步骤才会执行
+    requires: "session.get('need_diamond', '') == 'yes'"
     validations:
-      - field: drill_count
+      # 对 'diamond_count' 字段进行验证
+      - field: diamond_count
+        # 验证类型为 'number'，确保该字段为数字类型
         type: number
+    # 此步骤完成后，进入 'step5' 步骤
     next: step5
 
+  # 第七步：点油选择
   - id: step5
     name: 点油选择
     route: /step5
     template: steps/step5.html
+    # 此步骤完成后，进入 'step6' 步骤（这里注释表明后续应该还有对 'step6' 步骤的定义）
+    next: step6
+
+  # 第八步：手工选择
+  - id: step6
+    name: 手工选择
+    route: /step6
+    template: steps/step6.html
+    # 根据会话中 'need_handmade' 的值动态决定下一步骤
+    # 如果 'need_handmade' 为 yes，则下一步为 'step6a'，否则为 'result'
+    next_logic: >
+      'step6a' if session.get('need_handmade', '') == 'yes' else 'result'
+
+  # 第九步：手工价格
+  - id: step6a
+    name: 手工价格
+    route: /step6a
+    template: steps/step6a.html
+    # 该步骤执行的前置条件，只有当会话中 'need_handmade' 的值为 yes 时，此步骤才会执行
+    requires: "session.get('need_handmade', '') == 'yes'"
+    validations:
+      # 对 'handmade_count' 字段进行验证
+      - field: handmade_count
+        # 验证类型为 'number'，确保该字段为数字类型
+        type: number
+    # 此步骤完成后，进入 'result' 步骤
     next: result

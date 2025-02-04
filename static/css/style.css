@@ -141,27 +141,44 @@ button:hover, .btn:hover {
     background: #2980b9;
 }
 
-/* 进度条样式 */
-.progress-bar {
+
+/* 选项卡容器样式 */
+.tab-container {
+    position: fixed;
+    top: 0;
+    left: 15%; /* 使选项卡容器左右各留 15% 的空白，从而占页面宽度的 70% */
+    width: 70%;
     display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 3rem;
+    justify-content: space-around;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+    z-index: 1000; /* 确保选项卡显示在其他内容之上 */
 }
 
-.progress-step {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #e0e0e0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: #666;
+/* 选项卡样式 */
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: #333;
 }
 
-.progress-step.active {
-    background: #3498db;
+/* 选项卡悬停样式 */
+.tab:hover {
+    background-color: #e0e0e0;
+}
+
+/* 当前激活的选项卡样式 */
+.tab.active {
+    background-color: #007BFF;
     color: white;
+}
+
+/* 页面内容样式，为了避免内容被选项卡遮挡，添加顶部外边距 */
+.page-content {
+    margin-top: 40px; /* 根据选项卡的高度进行调整 */
+}
+
+.custom-text {
+    font-size: 0.5em; /* 大约相当于 h5 的默认字号 */
 }

@@ -8,7 +8,8 @@
             "name": "Start Application",
             "type": "debugpy",
             "request": "launch",
-            "program": "main.py",
+            "module": "gunicorn",
+            "args": ["--bind", "0.0.0.0:8080", "main:app"],
             "console": "internalConsole",
             "justMyCode": true
         }

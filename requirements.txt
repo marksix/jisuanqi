@@ -1,12 +1,23 @@
-gunicorn==22.0.0 ; python_version >= "3.9" \
-    --hash=sha256:350679f91b24062c86e386e198a15438d53a7a8207235a78ba1b53df4c4378d9 \
-    --hash=sha256:4a0b436239ff76fb33f11c07a16482c521a7e09c1ce3cc293c2330afe01bec63
-packaging==23.2 ; python_version >= "3.9" \
-    --hash=sha256:048fb0e9405036518eaaf48a55953c750c11e1a1b68e0dd1a9d62ed0c092cfc5 \
-    --hash=sha256:8c491190033a9af7e1d931d0b5dacc2ef47509b34dd0de67ed209b5203fc88c7
-flask==2.0.3
-pandas==1.3.5
-pyyaml==6.0
-flask-admin==1.6.0
-flask-talisman==1.0.0
-flask-wtf==1.0.0
+blinker==1.9.0
+click==8.1.8
+colorama==0.4.6 ; python_version >= "3.9" and platform_system == "Windows"
+Flask==3.1.0
+Flask-Admin==1.6.1
+Flask-Login==0.6.3
+flask-talisman==1.1.0
+Flask-WTF==1.2.2
+gunicorn==22.0.0
+importlib-metadata==7.0.1 ; python_version < "3.10" and python_version >= "3.9"
+itsdangerous==2.2.0
+Jinja2==3.1.5
+MarkupSafe==3.0.2
+numpy==2.2.2
+packaging==23.2
+pandas==2.2.3
+python-dateutil==2.9.0.post0
+pytz==2025.1
+PyYAML==6.0.2
+six==1.17.0
+tzdata==2025.1
+Werkzeug==3.1.3
+WTForms==3.2.1
