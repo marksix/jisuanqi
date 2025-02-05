@@ -2,20 +2,31 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>产品成本计算系统</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="tab-container">
-        {% for step in steps %}
-            <div class="tab {% if step.id == current_step.id %}active{% endif %}" onclick="location.href='{{ url_for(step.id) }}'">
-                <i class="fa fa-{{ 'check' if loop.index < current_step_index else 'circle' }}"></i>
-                {{ step.name }}
-            </div>
-        {% endfor %}
-    </div>
-    
+    <!-- 导航容器包裹所有导航元素 -->
+    <nav class="nav-wrapper">
+        <!-- 移动端导航图片 -->
+        <div>
+        <a href="#" class="mobile-nav-link">
+            <img src="static/img/nav-image.PNG" alt="导航步骤" class="mobile-nav-image">
+        </a>
+        </div>
+        <!-- 桌面端导航选项卡 -->
+        <div class="tab-container">
+            {% for step in steps %}
+                <div class="tab {% if step.id == current_step.id %}active{% endif %}" 
+                     onclick="location.href='{{ url_for(step.id) }}'">
+                    <i class="fa fa-{{ 'check' if loop.index < current_step_index else 'circle' }}"></i>
+                    {{ step.name }}
+                </div>
+            {% endfor %}
+        </div>
+    </nav>
     <div class="content">
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}

@@ -16,12 +16,54 @@ body {
     padding: 20px;
 }
 
-/* 表单容器 */
+/* 导航相关样式 */
+.nav-wrapper {
+    width: 100%;
+}
+
+.mobile-nav-image {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    object-fit: cover;
+    max-height: 150px;
+    z-index: 1;
+}
+
+.tab-container {
+    position: fixed;
+    top: 0;
+    left: 15%;
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+    z-index: 1000;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: #333;
+}
+
+.tab:hover {
+    background-color: #e0e0e0;
+}
+
+.tab.active {
+    background-color: #007BFF;
+    color: white;
+}
+
+/* 表单容器样式 */
 .form-container {
     background: white;
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 500px;
     margin: 20px auto;
@@ -87,41 +129,7 @@ input[type="number"]:focus {
 }
 
 /* 按钮样式 */
-button, .btn {
-    background: #3498db;
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.3s;
-    margin-top: 1rem;
-    text-align: center;
-    text-decoration: none;
-}
-
-button:hover, .btn:hover {
-    background: #2980b9;
-}
-
-/* 结果页面样式 */
-.result-container {
-    text-align: center;
-}
-
-.result-container ul {
-    list-style: none;
-    margin: 2rem 0;
-}
-
-.result-container li {
-    padding: 0.8rem;
-    background: #f8f9fa;
-    margin: 0.5rem 0;
-    border-radius: 6px;
-}
-/* 按钮样式 */
+button,
 .btn {
     background: #3498db;
     color: white;
@@ -137,48 +145,101 @@ button:hover, .btn:hover {
     display: inline-block;
 }
 
+button:hover,
 .btn:hover {
     background: #2980b9;
 }
 
-
-/* 选项卡容器样式 */
-.tab-container {
-    position: fixed;
-    top: 0;
-    left: 15%; /* 使选项卡容器左右各留 15% 的空白，从而占页面宽度的 70% */
-    width: 70%;
-    display: flex;
-    justify-content: space-around;
-    background-color: #f0f0f0;
-    border-bottom: 1px solid #ccc;
-    z-index: 1000; /* 确保选项卡显示在其他内容之上 */
+/* 结果页面样式 */
+.result-container {
+    text-align: center;
+    margin-top: 60px; /* 避免被桌面端选项卡遮挡 */
+    z-index: 2;
 }
 
-/* 选项卡样式 */
-.tab {
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    color: #333;
+.result-container ul {
+    list-style: none;
+    margin: 2rem 0;
 }
 
-/* 选项卡悬停样式 */
-.tab:hover {
-    background-color: #e0e0e0;
+.result-container li {
+    padding: 0.8rem;
+    background: #f8f9fa;
+    margin: 0.5rem 0;
+    border-radius: 6px;
 }
 
-/* 当前激活的选项卡样式 */
-.tab.active {
-    background-color: #007BFF;
-    color: white;
+/* 错误页面样式 */
+.error-container {
+    text-align: center;
+    margin-top: 60px; /* 避免被桌面端选项卡遮挡 */
+    z-index: 2;
 }
 
-/* 页面内容样式，为了避免内容被选项卡遮挡，添加顶部外边距 */
-.page-content {
-    margin-top: 40px; /* 根据选项卡的高度进行调整 */
+/* 移动端样式适配 */
+@media (max-width: 768px) {
+    body {
+        padding-top: 0 !important;
+    }
+
+    .nav-wrapper {
+        width: 100vw;
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+
+    .mobile-nav-image {
+        display: block;
+    }
+
+    .tab-container {
+        display: none;
+    }
+
+    .form-container {
+        margin-top: 160px !important;
+        z-index: 2;
+    }
+
+    .result-container {
+        margin-top: 55px;
+        z-index: 2;
+        font-size: 0.9em; /* 相对根元素字体大小缩小为 0.9 倍 */
+    }
+
+    .error-container {
+        margin-top: 160px;
+        z-index: 2;
+    }
+}
+
+/* 桌面端样式适配 */
+@media (min-width: 769px) {
+    .mobile-nav-image {
+        display: none;
+    }
+
+    .tab-container {
+        display: flex;
+    }
+}
+
+/* 提示信息样式 */
+.alert-container {
+    margin-top: 20px;
+}
+
+.alert {
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
 }
 
 .custom-text {
-    font-size: 0.5em; /* 大约相当于 h5 的默认字号 */
+    font-size: 0.8em;
 }

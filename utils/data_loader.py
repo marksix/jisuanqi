@@ -14,12 +14,12 @@ def load_data():
     products = process_id(pd.read_csv(f'{data_path}/products.csv'))
     # 读取摇镀数据并处理 product_id
     plating_shake = process_id(pd.read_csv(f'{data_path}/plating_shake.csv'))
-    # 读取板镀价格数据并处理 product_id
-    plating_whole = float(pd.read_csv(f'{data_path}/plating_whole.csv').iloc[0]['price'])
-    # 读取插镀价格数据并处理 product_id
-    plating_insert = process_id(pd.read_csv(f'{data_path}/plating_insert.csv'))
     # 读取颜色价格数据
     colors = pd.read_csv(f'{data_path}/color_prices.csv').set_index('color').to_dict()['price']
+     # 读取插镀价格数据并处理 product_id
+    plating_insert = process_id(pd.read_csv(f'{data_path}/plating_insert.csv'))
+    # 读取板镀价格数据并处理 product_id
+    plating_whole = float(pd.read_csv(f'{data_path}/plating_whole.csv').iloc[0]['price'])
     # 读取点钻价格数据
     diamond = float(pd.read_csv(f'{data_path}/diamond_price.csv').iloc[0]['price'])
     # 读取注塑加工价格数据

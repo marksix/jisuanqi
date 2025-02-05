@@ -4,7 +4,7 @@
 
 {% block content %}
     <h2>是否需要手工？</h2>
-    <form method="POST">
+    <form method="POST" accept-charset="UTF-8">
         <div class="radio-group">
             <label>
                 <input type="radio" name="need_handmade" value="yes" required> 
@@ -15,6 +15,6 @@
                 <span>否</span>
             </label>
         </div>
-        <button type="submit">计算结果</button>
+        <button type="submit">下一步</button>
     </form>
 {% endblock %}
